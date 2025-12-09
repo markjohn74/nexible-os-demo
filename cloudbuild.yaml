@@ -1,0 +1,27 @@
+
+steps:
+  # Install Dependencies
+  - name: 'node:18'
+    entrypoint: 'npm'
+    args: ['install']
+
+  # Build React App
+  - name: 'node:18'
+    entrypoint: 'npm'
+    args: ['run', 'build']
+    env:
+      - 'REACT_APP_FIREBASE_API_KEY=${_FIREBASE_API_KEY}'
+      - 'REACT_APP_AUTH_DOMAIN=${_AUTH_DOMAIN}'
+      - 'REACT_APP_PROJECT_ID=${_PROJECT_ID}'
+
+  # Deploy to Firebase
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        firebase deploy --project $PROJECT_ID --token ${_FIREBASE_TOKEN}
+
+substitutions:
+  _FIREBASE_API_KEY: "needs-value"
+  _AUTH_DOMAIN: "needs-value"

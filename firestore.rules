@@ -1,0 +1,52 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user belongs to the fund
+    function belongsToFund(fundId) {
+      return request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.fundId == fundId;
+    }
+
+    // Helper function to check if user is Fund Admin
+    function isFundAdmin(fundId) {
+      return belongsToFund(fundId) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'VC_Team';
+    }
+
+    // FUND LEVEL ISOLATION
+    match /funds/{fundId} {
+      // Only members of the fund can read fund data
+      allow read: if belongsToFund(fundId);
+      
+      // Only Admins can update fund settings
+      allow write: if isFundAdmin(fundId);
+
+      // USERS COLLECTION
+      match /users/{userId} {
+        // Users can read other users in the same fund (for matching)
+        allow read: if belongsToFund(fundId);
+        // Users can only update their own profile
+        allow write: if request.auth.uid == userId;
+      }
+
+      // REQUESTS COLLECTION
+      match /requests/{requestId} {
+        // Involved parties + Admins can read
+        allow read: if belongsToFund(fundId) && (
+          resource.data.requesterId == request.auth.uid || 
+          resource.data.connectorId == request.auth.uid ||
+          isFundAdmin(fundId)
+        );
+        
+        // Creation allowed by any authenticated member
+        allow create: if belongsToFund(fundId);
+        
+        // Updates allowed by involved parties (e.g. status changes)
+        allow update: if belongsToFund(fundId) && (
+          resource.data.requesterId == request.auth.uid || 
+          resource.data.connectorId == request.auth.uid
+        );
+      }
+    }
+  }
+}

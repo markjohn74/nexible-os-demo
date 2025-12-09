@@ -1,0 +1,30 @@
+{
+  "export_status": "Ready",
+  "repository_name": "nexible-os-demo",
+  "branch": "main",
+  "description": "Nexible Network Operating System - Investible Demo MVP",
+  "files_included": [
+    "package.json",
+    "vite.config.ts",
+    "tsconfig.json",
+    "index.html",
+    "index.tsx",
+    "App.tsx",
+    "types.ts",
+    "services/mockData.ts",
+    "components/Dashboard.tsx",
+    "components/IntroRequestFlow.tsx",
+    "components/NetworkScanner.tsx",
+    "components/Marketplace.tsx",
+    "components/FACLanding.tsx",
+    "components/DetailView.tsx",
+    "components/VentureStatusDashboard.tsx",
+    "components/UploadContactsScreen.tsx",
+    "components/TransactionDetailScreen.tsx",
+    "components/Homepage.tsx"
+  ],
+  "next_steps": {
+    "vercel_deployment": "Connect this repository to Vercel. Select 'Vite' as the framework preset if not detected automatically.",
+    "demo_verification": "Visit the Vercel URL to verify the 50/50 split commission logic and full dashboard interactivity."
+  }
+}
