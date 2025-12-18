@@ -1,0 +1,24 @@
+{
+  "deployment_platform": "Vercel",
+  "action": "Deploy GitHub Repository",
+  "repository_name": "nexible-os-demo",
+  "instructions": [
+    {
+      "step": 1,
+      "description": "Open a new browser tab and go to Vercel (vercel.com). Log in using your GitHub account."
+    },
+    {
+      "step": 2,
+      "description": "On the Vercel dashboard, click 'Add New' or 'Import Project'."
+    },
+    {
+      "step": 3,
+      "description": "Find and select the 'nexible-os-demo' repository you just created."
+    },
+    {
+      "step": 4,
+      "description": "Vercel will auto-detect the configuration. Click the 'Deploy' button."
+    }
+  ],
+  "result": "Vercel will provide a public, shareable URL for your Nexible MVP."
+}
