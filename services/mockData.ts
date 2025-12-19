@@ -1,4 +1,3 @@
-
 import { User, Vendor, IntroRequest } from '../types';
 
 export const USERS: User[] = [
@@ -7,7 +6,7 @@ export const USERS: User[] = [
     id: 'u_charlie',
     name: 'Charlie Ill',
     role: 'VC_Team',
-    company: 'Investible (CIO)',
+    company: 'Capital Partners (CIO)',
     avatar: 'https://ui-avatars.com/api/?name=Charlie+Ill&background=0f172a&color=f59e0b&bold=true',
     points: 12000,
     tier: 'Partner',
@@ -17,7 +16,7 @@ export const USERS: User[] = [
     id: 'u_jayden',
     name: 'Jayden Basha',
     role: 'VC_Team',
-    company: 'Investible (Principal)',
+    company: 'Capital Partners (Principal)',
     avatar: 'https://ui-avatars.com/api/?name=Jayden+Basha&background=0f172a&color=f59e0b&bold=true',
     points: 8000,
     tier: 'Partner',
@@ -27,7 +26,7 @@ export const USERS: User[] = [
     id: 'u_trevor',
     name: 'Trevor Folsom',
     role: 'VC_Team',
-    company: 'Investible (Co-Founder)',
+    company: 'Capital Partners (Co-Founder)',
     avatar: 'https://ui-avatars.com/api/?name=Trevor+Folsom&background=0f172a&color=f59e0b&bold=true',
     points: 15000,
     tier: 'Partner',
@@ -37,7 +36,7 @@ export const USERS: User[] = [
     id: 'u_creel',
     name: 'Creel Price',
     role: 'VC_Team',
-    company: 'Investible (Co-Founder)',
+    company: 'Capital Partners (Co-Founder)',
     avatar: 'https://ui-avatars.com/api/?name=Creel+Price&background=0f172a&color=f59e0b&bold=true',
     points: 14500,
     tier: 'Partner',
@@ -46,11 +45,11 @@ export const USERS: User[] = [
   {
     id: 'u_tim',
     name: 'Tim Coates',
-    role: 'VC_Team', // Updated to VC_Team
-    company: 'Investible (Head of IR)',
-    avatar: 'https://ui-avatars.com/api/?name=Tim+Coates&background=0f172a&color=f59e0b&bold=true', // Updated background to match VC style
+    role: 'VC_Team',
+    company: 'Capital Partners (Head of IR)',
+    avatar: 'https://ui-avatars.com/api/?name=Tim+Coates&background=0f172a&color=f59e0b&bold=true',
     points: 9500,
-    tier: 'Partner', // Updated to Partner
+    tier: 'Partner',
     connections: 11000
   },
   // Investor Connectors
@@ -58,9 +57,9 @@ export const USERS: User[] = [
     id: 'u_mehdi',
     name: 'Mehdi Querim',
     role: 'Investor_Connector',
-    company: 'Club Invest Member',
+    company: 'Fund Member',
     avatar: 'https://ui-avatars.com/api/?name=Mehdi+Querim&background=1e293b&color=cbd5e1&bold=true',
-    points: 3500, // Updated for Rewards Demo
+    points: 3500,
     tier: 'Gold',
     connections: 5200
   },
@@ -70,8 +69,8 @@ export const USERS: User[] = [
     role: 'Investor_Connector',
     company: 'Venture Partner',
     avatar: 'https://ui-avatars.com/api/?name=Jason+Stirling&background=1e293b&color=cbd5e1&bold=true',
-    points: 4200, // Updated for Rewards Demo
-    tier: 'Gold', // Updated for Rewards Demo
+    points: 4200,
+    tier: 'Gold',
     connections: 4800
   },
   // Portfolio Founder
@@ -232,9 +231,7 @@ export const VENDORS: Vendor[] = [
   }
 ];
 
-// MOCK REQUESTS - Enforced 50/50 Split between Mark John (0%) and Sarah Riley (5%)
 export const MOCK_REQUESTS: IntroRequest[] = [
-  // --- MARK JOHN (Portfolio Founder) Requests - 0% Commission ---
   {
     id: 'r_mark_1',
     requesterId: 'u_mark',
@@ -289,8 +286,6 @@ export const MOCK_REQUESTS: IntroRequest[] = [
     connectorCommissionRate: 0.0,
     createdAt: '2023-11-08'
   },
-
-  // --- SARAH RILEY (Access Founder) Requests - 5% Commission ---
   {
     id: 'r_sarah_1',
     requesterId: 'u_sarah',
@@ -344,8 +339,6 @@ export const MOCK_REQUESTS: IntroRequest[] = [
     connectorCommissionRate: 0.0,
     createdAt: '2023-11-15'
   },
-
-  // --- HISTORICAL DATA FOR MEHDI (Target $55k Comm @ 2.0%) ---
   {
     id: 'r_hist_mehdi_1',
     requesterId: 'u_niki',
@@ -358,13 +351,13 @@ export const MOCK_REQUESTS: IntroRequest[] = [
     connectorId: 'u_mehdi',
     connectorCommissionRate: 2.0,
     createdAt: '2023-08-15',
-    value: 2000000 // 2% = $40,000
+    value: 2000000 
   },
   {
     id: 'r_hist_mehdi_2',
     requesterId: 'u_niki',
     targetName: 'Head of Lending',
-    targetCompany: 'NAB Ventures',
+    targetCompany: 'Major Bank Ventures',
     reason: 'Debt Facility',
     context: 'Securing debt facility for fintech rollout.',
     commissionRate: 5.0,
@@ -372,10 +365,8 @@ export const MOCK_REQUESTS: IntroRequest[] = [
     connectorId: 'u_mehdi',
     connectorCommissionRate: 2.0,
     createdAt: '2023-09-10',
-    value: 750000 // 2% = $15,000. Total Mehdi = $55,000
+    value: 750000 
   },
-
-  // --- HISTORICAL DATA FOR JASON (Target $62.5k Comm @ 1.0%) ---
   {
     id: 'r_hist_jason_1',
     requesterId: 'u_sarah',
@@ -388,7 +379,7 @@ export const MOCK_REQUESTS: IntroRequest[] = [
     connectorId: 'u_jason',
     connectorCommissionRate: 1.0,
     createdAt: '2023-07-22',
-    value: 4000000 // 1% = $40,000
+    value: 4000000 
   },
   {
     id: 'r_hist_jason_2',
@@ -402,18 +393,17 @@ export const MOCK_REQUESTS: IntroRequest[] = [
     connectorId: 'u_jason',
     connectorCommissionRate: 1.0,
     createdAt: '2023-09-05',
-    value: 2250000 // 1% = $22,500. Total Jason = $62,500
+    value: 2250000 
   }
 ];
 
-// Pool of connectors prioritizing the requested specific people
 export const CONNECTORS_POOL = [
-  { id: 'u_trevor', name: 'Trevor Folsom', company: 'Investible', matchScore: 99, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Trevor+Folsom&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
-  { id: 'u_creel', name: 'Creel Price', company: 'Investible', matchScore: 97, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Creel+Price&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
-  { id: 'u_charlie', name: 'Charlie Ill', company: 'Investible', matchScore: 95, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Charlie+Ill&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
-  { id: 'u_jayden', name: 'Jayden Basha', company: 'Investible', matchScore: 89, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Jayden+Basha&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
-  { id: 'u_tim', name: 'Tim Coates', company: 'Investible', matchScore: 88, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Tim+Coates&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 }, // Updated to VC_Team and 0.0
-  { id: 'u_mehdi', name: 'Mehdi Querim', company: 'Club Invest', matchScore: 85, role: 'Investor_Connector', avatar: 'https://ui-avatars.com/api/?name=Mehdi+Querim&background=1e293b&color=cbd5e1&bold=true', commissionRate: 2.0 },
-  { id: 'u_jason', name: 'Jason Stirling', company: 'Partner', matchScore: 82, role: 'Investor_Connector', avatar: 'https://ui-avatars.com/api/?name=Jason+Stirling&background=1e293b&color=cbd5e1&bold=true', commissionRate: 1.0 },
+  { id: 'u_trevor', name: 'Trevor Folsom', company: 'Capital Group', matchScore: 99, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Trevor+Folsom&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
+  { id: 'u_creel', name: 'Creel Price', company: 'Capital Group', matchScore: 97, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Creel+Price&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
+  { id: 'u_charlie', name: 'Charlie Ill', company: 'Capital Group', matchScore: 95, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Charlie+Ill&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
+  { id: 'u_jayden', name: 'Jayden Basha', company: 'Capital Group', matchScore: 89, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Jayden+Basha&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
+  { id: 'u_tim', name: 'Tim Coates', company: 'Capital Group', matchScore: 88, role: 'VC_Team', avatar: 'https://ui-avatars.com/api/?name=Tim+Coates&background=0f172a&color=f59e0b&bold=true', commissionRate: 0.0 },
+  { id: 'u_mehdi', name: 'Mehdi Querim', company: 'Venture Partner', matchScore: 85, role: 'Investor_Connector', avatar: 'https://ui-avatars.com/api/?name=Mehdi+Querim&background=1e293b&color=cbd5e1&bold=true', commissionRate: 2.0 },
+  { id: 'u_jason', name: 'Jason Stirling', company: 'Global Advisor', matchScore: 82, role: 'Investor_Connector', avatar: 'https://ui-avatars.com/api/?name=Jason+Stirling&background=1e293b&color=cbd5e1&bold=true', commissionRate: 1.0 },
   { id: 'u_mark', name: 'Mark John', company: 'ConnectCo', matchScore: 75, role: 'PortfolioFounder_Connector', avatar: 'https://ui-avatars.com/api/?name=Mark+John&background=1e293b&color=cbd5e1&bold=true', commissionRate: 0.0 },
 ];

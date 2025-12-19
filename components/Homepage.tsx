@@ -25,7 +25,7 @@ const Homepage: React.FC<Props> = ({ onEnterDemo }) => {
               </div>
               <div className="leading-tight">
                 <span className="block text-lg font-bold text-white tracking-tight">Nexible</span>
-                <span className="block text-xs text-nexible-muted font-medium tracking-wide">INVESTIBLE OS</span>
+                <span className="block text-xs text-nexible-muted font-medium tracking-wide">NETWORK OS</span>
               </div>
            </div>
            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
@@ -92,10 +92,10 @@ const Homepage: React.FC<Props> = ({ onEnterDemo }) => {
                      <TrendingUp className="w-6 h-6 text-blue-500" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4">Alpha Quantification</h3>
-                  <p className="text-slate-400 mb-6">Real-time tracking of network effects and attribution modeling for Fund IV ecosystem participants.</p>
+                  <p className="text-slate-400 mb-6">Real-time tracking of network effects and attribution modeling for ecosystem participants.</p>
                   <ul className="space-y-4 text-slate-400">
                      <li className="flex items-start gap-2"><CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" /> LP Performance Reporting Protocols</li>
-                     <li className="flex items-start gap-2"><CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" /> 1,100bps Boost in Unrealized IRR Attribution</li>
+                     <li className="flex items-start gap-2"><CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" /> Significant Boost in Unrealized IRR Attribution</li>
                   </ul>
                </div>
                <div className="bg-nexible-dark p-8 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition-all group">
@@ -206,7 +206,7 @@ const Homepage: React.FC<Props> = ({ onEnterDemo }) => {
                 <span className="text-blue-400 font-bold text-sm tracking-widest uppercase mb-4 block">Information Node</span>
                 <h2 className="text-4xl font-bold text-white mb-6">Exclusive Ecosystem Access</h2>
                 <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-                   The Founder Access Circle (FAC) is a restricted-access program for high-performance portfolio members. It provides the governance framework for secondary network effects, offering deep integration into the Investible Fund IV alpha graph.
+                   The Founder Access Circle (FAC) is a restricted-access program for high-performance portfolio members. It provides the governance framework for secondary network effects, offering deep integration into the underlying network alpha graph.
                 </p>
                 
                 <div className="grid sm:grid-cols-2 gap-8 mb-10">
@@ -225,7 +225,7 @@ const Homepage: React.FC<Props> = ({ onEnterDemo }) => {
                       </div>
                       <div>
                          <p className="text-white font-bold">Preferred GTM Access</p>
-                         <p className="text-sm text-slate-500">Priority commercial pathfinding within the Investible network.</p>
+                         <p className="text-sm text-slate-500">Priority commercial pathfinding within the fund's network.</p>
                       </div>
                    </div>
                 </div>

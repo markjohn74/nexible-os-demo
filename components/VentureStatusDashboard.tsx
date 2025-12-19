@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { User, IntroRequest } from '../types';
 import { ArrowLeft, Award, TrendingUp, DollarSign, Lock, Unlock, ChevronRight, Crown, Star } from 'lucide-react';
@@ -12,22 +11,17 @@ interface Props {
 }
 
 const VentureStatusDashboard: React.FC<Props> = ({ user, requests, onBack, onSelectRequest }) => {
-  // Filter requests where this user is the connector
   const myDeals = requests.filter(r => r.connectorId === user.id);
   
-  // Calculate specific metrics
   const completedDeals = myDeals.filter(r => r.status === 'CommercialConverted').length;
-  // const totalDealValue = myDeals.reduce((acc, curr) => acc + (curr.value || 0), 0);
   
-  // Calculate Actual Commission based on dynamic rates
   const totalCommissionEarned = myDeals.reduce((acc, curr) => {
     if (curr.status !== 'CommercialConverted' || !curr.value) return acc;
-    // Use the connector's specific rate if available, otherwise fallback to standard 2.5
     const rate = curr.connectorCommissionRate !== undefined ? curr.connectorCommissionRate : (curr.commissionRate === 0 ? 0 : 2.5);
     return acc + (curr.value * (rate / 100));
   }, 0);
 
-  const estCarryValue = 250000; // Mock value as per requirement
+  const estCarryValue = 250000; 
   const pointsToNextTier = 500;
   const currentPoints = user.points;
   const nextTierPoints = currentPoints + pointsToNextTier;
@@ -52,7 +46,7 @@ const VentureStatusDashboard: React.FC<Props> = ({ user, requests, onBack, onSel
            </div>
            <h1 className="text-4xl font-bold text-white mb-2">Venture Status & Carry Access</h1>
            <p className="text-nexible-muted text-lg max-w-2xl">
-             Track your accrued Alpha Capital and unlock privileged access to the Investible Co-Investment Carry Pool.
+             Track your accrued Alpha Capital and unlock privileged access to the fund's Co-Investment Carry Pool.
            </p>
         </div>
         <div className="text-right">
@@ -92,7 +86,7 @@ const VentureStatusDashboard: React.FC<Props> = ({ user, requests, onBack, onSel
             </div>
             <p className="text-slate-400 text-sm uppercase font-bold tracking-wider mb-1 relative z-10">Est. Future Carry Value</p>
             <h3 className="text-4xl font-bold text-white mb-2 relative z-10">${estCarryValue.toLocaleString()}</h3>
-            <p className="text-slate-500 text-sm relative z-10">Projected value based on Gold Tier allocation in Fund IV.</p>
+            <p className="text-slate-500 text-sm relative z-10">Projected value based on Gold Tier allocation in current fund.</p>
          </div>
       </div>
 

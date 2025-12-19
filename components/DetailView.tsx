@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { DetailViewType, IntroRequest } from '../types';
 import { USERS } from '../services/mockData';
@@ -35,8 +34,8 @@ const DetailView: React.FC<Props> = ({ viewType, onBack, requests, onSelectReque
                                 <User className="w-6 h-6 text-slate-400" />
                             </div>
                             <div>
-                                <h4 className="font-bold text-white">Top Match for "Atlassian"</h4>
-                                <p className="text-sm text-nexible-muted">Found via Investible Team (Trevor Folsom)</p>
+                                <h4 className="font-bold text-white">Top Match Identified</h4>
+                                <p className="text-sm text-nexible-muted">Found via Network Team routing.</p>
                             </div>
                         </div>
                         <span className="text-emerald-400 font-bold bg-emerald-400/10 px-3 py-1 rounded-full text-sm">99% Match</span>
@@ -51,17 +50,17 @@ const DetailView: React.FC<Props> = ({ viewType, onBack, requests, onSelectReque
             <div className="grid gap-4">
                 <div className="bg-nexible-panel border border-slate-700 p-6 rounded-xl">
                     <div className="flex justify-between items-start mb-4">
-                        <h4 className="font-bold text-white text-lg">AWS Credits</h4>
+                        <h4 className="font-bold text-white text-lg">Cloud Infrastructure Credits</h4>
                         <span className="text-emerald-400 font-bold">$10,000</span>
                     </div>
-                    <p className="text-sm text-slate-400">Applied via Investible Perks Program.</p>
+                    <p className="text-sm text-slate-400">Applied via Ecosystem Perks Program.</p>
                 </div>
                 <div className="bg-nexible-panel border border-slate-700 p-6 rounded-xl">
                      <div className="flex justify-between items-start mb-4">
                         <h4 className="font-bold text-white text-lg">Legal Audit</h4>
                         <span className="text-emerald-400 font-bold">$2,500</span>
                     </div>
-                    <p className="text-sm text-slate-400">Saved on IP review with LegalVisionary.</p>
+                    <p className="text-sm text-slate-400">Saved on IP review with vetted partners.</p>
                 </div>
             </div>
         )
@@ -69,10 +68,10 @@ const DetailView: React.FC<Props> = ({ viewType, onBack, requests, onSelectReque
 
     if (viewType === 'commercial_value') {
         const ledgerItems = [
-             { id: 204, name: "HealthTech Inc (FAC)", category: "Executive Hire", connector: "Tim Coates", value: "+$150,000", date: "Oct 2023" },
-             { id: 205, name: "Stealth AI (FAC)", category: "IP Strategy Partnership", connector: "Trevor Folsom", value: "+$85,000", date: "Nov 2023" },
-             { id: 206, name: "GreenEnergy (FAC)", category: "Series A Advisory", connector: "Mehdi Querim", value: "+$320,000", date: "Dec 2023" },
-             { id: 207, name: "FinFlow Solutions (FAC)", category: "Compliance Audit", connector: "Jason Stirling", value: "+$45,000", date: "Jan 2024" }
+             { id: 204, name: "HealthTech Inc (FAC)", category: "Executive Hire", connector: "Network Advisor", value: "+$150,000", date: "Oct 2023" },
+             { id: 205, name: "Stealth AI (FAC)", category: "IP Strategy Partnership", connector: "Venture Partner", value: "+$85,000", date: "Nov 2023" },
+             { id: 206, name: "GreenEnergy (FAC)", category: "Series A Advisory", connector: "Fund Member", value: "+$320,000", date: "Dec 2023" },
+             { id: 207, name: "FinFlow Solutions (FAC)", category: "Compliance Audit", connector: "Strategic Partner", value: "+$45,000", date: "Jan 2024" }
         ];
 
         return (
@@ -114,7 +113,6 @@ const DetailView: React.FC<Props> = ({ viewType, onBack, requests, onSelectReque
         )
     }
 
-    // Default List for Active Intros / Pending
     return (
       <div className="space-y-3">
         {requests.map(req => {
@@ -129,11 +127,9 @@ const DetailView: React.FC<Props> = ({ viewType, onBack, requests, onSelectReque
                 onClick={() => onSelectRequest(req)}
                 className="w-full text-left bg-nexible-panel border border-slate-700 p-5 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:border-nexible-gold/50 transition-all relative overflow-hidden"
             >
-                {/* Visual Strip */}
                 <div className={`absolute left-0 top-0 bottom-0 w-1 ${isCommercial ? 'bg-emerald-500' : 'bg-slate-700 group-hover:bg-nexible-gold'}`}></div>
 
                 <div className="flex-1 pl-2">
-                    {/* Top Row: Parties */}
                     <div className="flex items-center gap-2 mb-2 text-xs text-slate-400">
                         <div className="flex items-center gap-1.5 bg-slate-800/50 px-2 py-1 rounded-full border border-slate-700">
                            <img src={requester?.avatar} className="w-4 h-4 rounded-full" alt="" />
@@ -156,7 +152,7 @@ const DetailView: React.FC<Props> = ({ viewType, onBack, requests, onSelectReque
                             <div className="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/20 mb-1">
                                 <Sparkles className="w-3 h-3" /> INTERNAL (0% FEE)
                             </div>
-                            <p className="text-xs text-slate-500">Investible Ecosystem</p>
+                            <p className="text-xs text-slate-500">Portfolio Ecosystem</p>
                         </div>
                     ) : (
                         <div className="text-right">

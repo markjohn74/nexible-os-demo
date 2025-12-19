@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { User, IntroRequest } from '../types';
 import { CONNECTORS_POOL } from '../services/mockData';
@@ -16,7 +15,7 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
   const [formData, setFormData] = useState({
     targetName: '',
     targetCompany: '',
-    reason: '', // Will map context to this if needed, or just use context
+    reason: '', 
     context: '',
     agreedToCommission: false,
   });
@@ -27,36 +26,27 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
   // LOGIC HELPERS
   const isAccessFounder = user.role === 'AccessFounder';
   
-  // Determine if Requester is an internal ecosystem member
   const isRequesterInternal = 
     user.role === 'PortfolioFounder_Connector' || 
     user.role === 'VC_Team' || 
     user.role === 'Investor_Connector';
 
-  // Get details of selected connectors
   const selectedConnectorDetails = CONNECTORS_POOL.filter(c => selectedConnectors.includes(c.id));
 
-  // Determine if ALL selected connectors are internal ecosystem members
   const areConnectorsInternal = selectedConnectorDetails.length > 0 && selectedConnectorDetails.every(c => 
     c.role === 'VC_Team' || 
     c.role === 'Investor_Connector' || 
     c.role === 'PortfolioFounder_Connector'
   );
 
-  // Effective Commission Calculation
-  // 1. Access Founders always pay 5% (Network Fee)
-  // 2. Internal Members connecting to Internal Members pay 0% (Ecosystem Benefit)
-  // 3. Otherwise standard 2.5%
   const isCommissionFree = !isAccessFounder && isRequesterInternal && areConnectorsInternal;
   const effectiveCommissionRate = isAccessFounder ? 5.0 : (isCommissionFree ? 0 : 2.5);
 
   const handleScanComplete = () => {
     setIsScanning(false);
-    // Stay on Step 2 (Matches)
   };
 
   const startScan = () => {
-    // Production Validation
     if (!formData.targetName.trim() || !formData.targetCompany.trim() || !formData.context.trim()) {
       setError("Please complete all fields to start the matching engine.");
       return;
@@ -88,12 +78,12 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
       requesterId: user.id,
       targetName: formData.targetName,
       targetCompany: formData.targetCompany,
-      reason: formData.context, // Use context as reason for now
+      reason: formData.context, 
       context: formData.context,
       commissionRate: effectiveCommissionRate,
       status: 'AwaitingResponse',
       createdAt: new Date().toISOString(),
-      connectorCommissionRate: selectedConnectorDetails[0]?.commissionRate // Capture specific connector rate
+      connectorCommissionRate: selectedConnectorDetails[0]?.commissionRate 
     };
     onSubmit(req);
     onClose();
@@ -107,7 +97,7 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
         <div className="p-6 border-b border-nexible-panel flex justify-between items-center bg-nexible-panel/30">
           <div>
             <h2 className="text-2xl font-bold text-white">Request Introduction</h2>
-            <p className="text-nexible-muted text-sm">Step {step} of 3 • <span className="text-nexible-gold">Investible Network</span></p>
+            <p className="text-nexible-muted text-sm">Step {step} of 3 • <span className="text-nexible-gold">Ecosystem Network</span></p>
           </div>
           <button onClick={onClose} className="text-nexible-muted hover:text-white transition-colors">✕</button>
         </div>
@@ -122,7 +112,7 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
                 <div className="flex items-start gap-3">
                   <Info className="w-5 h-5 text-nexible-gold shrink-0 mt-0.5" />
                   <p className="text-sm text-slate-300">
-                    The Investible engine will search across <span className="text-white font-bold">25,000+ verified contacts</span> from our Partners, Investment Team, and LPs.
+                    The platform engine will search across <span className="text-white font-bold">verified network contacts</span> from our Partners, Investment Team, and LPs.
                   </p>
                 </div>
               </div>
@@ -154,7 +144,7 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
                 <label className="block text-sm font-medium text-nexible-muted mb-1">The Ask (Context & Reason)</label>
                 <textarea 
                   className="w-full bg-nexible-panel border border-slate-700 rounded-lg p-3 text-white h-32 focus:ring-2 focus:ring-nexible-gold outline-none"
-                  placeholder="Why do you need this intro? Be specific to increase acceptance rate. (e.g. 'We have a signed pilot with a competitor...')"
+                  placeholder="Why do you need this intro? Be specific to increase acceptance rate."
                   value={formData.context}
                   onChange={(e) => setFormData({...formData, context: e.target.value})}
                 />
@@ -176,14 +166,14 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
             </div>
           )}
 
-          {/* STEP 2: Matches (with optional scanner overlay) */}
+          {/* STEP 2: Matches */}
           {step === 2 && (
             <div className="h-full relative flex flex-col">
               {isScanning ? (
                 <div className="flex flex-col items-center justify-center h-full py-10 space-y-8 animate-fade-in absolute inset-0 bg-nexible-dark z-10">
                   <NetworkScanner onComplete={handleScanComplete} />
                   <p className="text-center text-slate-400 text-sm max-w-sm">
-                    Scanning Investible proprietary datasets: Partners, Investment Team (Fund IV), and Club Invest members...
+                    Scanning proprietary fund datasets: Partners, Investment Team, and verified members...
                   </p>
                 </div>
               ) : (
@@ -204,7 +194,6 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
                             : 'bg-nexible-panel border-slate-700 hover:border-slate-500'}`}
                       >
                         <div className="flex items-center gap-4">
-                          {/* Avatar */}
                           <div className="w-10 h-10 rounded-full bg-slate-800 overflow-hidden border border-slate-600">
                              <img src={connector.avatar} alt={connector.name} className="w-full h-full object-cover" />
                           </div>
@@ -261,17 +250,16 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
               
               {!isCommissionFree && (
                 <p className="text-slate-400 text-center text-sm px-4">
-                  To maintain the integrity of the Investible ecosystem, all commercial introductions are subject to a standard success fee framework.
+                  To maintain the integrity of the network ecosystem, all commercial introductions are subject to a standard success fee framework.
                 </p>
               )}
               
               {isCommissionFree && (
                 <p className="text-emerald-400 text-center text-sm px-4 font-medium">
-                  Internal portfolio connections are subsidized by Investible to accelerate value creation.
+                  Internal portfolio connections are subsidized by the fund to accelerate value creation.
                 </p>
               )}
 
-              {/* Commission & Legal Section */}
               <div className={`border rounded-xl p-6 mt-4 transition-colors 
                 ${isAccessFounder ? 'bg-amber-900/10 border-amber-500/30' : 
                   isCommissionFree ? 'bg-emerald-900/10 border-emerald-500/30' : 
@@ -298,7 +286,7 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
                       {isAccessFounder 
                         ? `As an Access Founder, you acknowledge a ${effectiveCommissionRate}% success fee on realized commercial value from this introduction. 2.5% is allocated to the Connector.`
                         : isCommissionFree
-                        ? "Great news! As this is an internal connection between Investible portfolio members, no success fees apply to this introduction."
+                        ? "Great news! As this is an internal connection between fund portfolio members, no success fees apply to this introduction."
                         : `Standard network protocol applies (Maximum ${effectiveCommissionRate}% liability).`}
                     </p>
                     
@@ -314,7 +302,7 @@ const IntroRequestFlow: React.FC<Props> = ({ user, onClose, onSubmit }) => {
                       />
                       <span className="text-sm font-medium text-white group-hover:text-nexible-gold transition-colors">
                          {isCommissionFree 
-                           ? "This introduction is commission-free as both parties are part of the Investible Portfolio Network. You agree to the legally binding contract."
+                           ? "This introduction is commission-free as both parties are part of the internal portfolio network. You agree to the legally binding contract."
                            : <span>I agree to the legally binding contract to allocate <span className="text-white font-bold underline">{effectiveCommissionRate}%</span> of the final commercial deal value to the Connector, unless manually zeroed out by the Connector.</span>
                          }
                       </span>

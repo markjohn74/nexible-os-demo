@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { User, IntroRequest, DetailViewType } from '../types';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -110,7 +109,7 @@ const Dashboard: React.FC<Props> = ({ user, requests, onNavigate, onSwitchTab, o
       <div className="space-y-8 animate-fade-in">
         <div className="flex justify-between items-end">
           <div>
-            <h1 className="text-4xl font-bold text-white mb-2">Fund IV Ecosystem</h1>
+            <h1 className="text-4xl font-bold text-white mb-2">Fund Ecosystem</h1>
             <p className="text-nexible-muted">Real-time network alpha and deal flow monitoring.</p>
           </div>
           <div className="bg-slate-800 px-4 py-2 rounded-lg border border-slate-700 flex gap-4">
@@ -162,7 +161,7 @@ const Dashboard: React.FC<Props> = ({ user, requests, onNavigate, onSwitchTab, o
                       <div className="flex items-center gap-3">
                          <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">#{i}</div>
                          <div className="text-sm">
-                            <p className="text-white font-bold">Investible Team</p>
+                            <p className="text-white font-bold">Network Team</p>
                             <p className="text-xs text-nexible-muted">Partner</p>
                          </div>
                       </div>
@@ -179,7 +178,6 @@ const Dashboard: React.FC<Props> = ({ user, requests, onNavigate, onSwitchTab, o
     );
   }
 
-  // 2. INVESTOR CONNECTOR DASHBOARD (Personal Rewards)
   if (role === 'Investor_Connector') {
     return (
       <div className="space-y-8 animate-fade-in">
@@ -221,12 +219,11 @@ const Dashboard: React.FC<Props> = ({ user, requests, onNavigate, onSwitchTab, o
     );
   }
 
-  // 3. PORTFOLIO/ACCESS FOUNDER DASHBOARD (Operational)
   return (
     <div className="space-y-8 animate-fade-in">
       <div>
         <h1 className="text-4xl font-bold text-white mb-2">Founder Network Dashboard</h1>
-        <p className="text-nexible-muted">Leverage the Investible ecosystem to accelerate your roadmap.</p>
+        <p className="text-nexible-muted">Leverage the fund's ecosystem to accelerate your roadmap.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { IntroRequest } from '../types';
 import { USERS } from '../services/mockData';
@@ -13,7 +12,6 @@ const TransactionDetailScreen: React.FC<Props> = ({ request, onBack }) => {
   const requester = USERS.find(u => u.id === request.requesterId);
   const connector = USERS.find(u => u.id === request.connectorId);
 
-  // Helper to determine progress step based on status
   const getProgressStep = (status: string) => {
     switch (status) {
       case 'Pending': return 1;
@@ -63,9 +61,7 @@ const TransactionDetailScreen: React.FC<Props> = ({ request, onBack }) => {
       <div className="bg-nexible-panel border border-slate-700 rounded-xl p-8">
         <h3 className="text-lg font-bold text-white mb-8">Transaction Progress</h3>
         <div className="relative">
-            {/* Progress Bar Background */}
             <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-800 -translate-y-1/2 rounded-full"></div>
-            {/* Active Progress */}
             <div className="absolute top-1/2 left-0 h-1 bg-nexible-gold -translate-y-1/2 rounded-full transition-all duration-1000" style={{ width: `${(currentStep - 1) * 33}%` }}></div>
 
             <div className="relative flex justify-between">
@@ -92,7 +88,6 @@ const TransactionDetailScreen: React.FC<Props> = ({ request, onBack }) => {
 
       {/* Parties Involved */}
       <div className="grid md:grid-cols-2 gap-6">
-         {/* Requester */}
          <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">Requester</h3>
             <div className="flex items-center gap-4">
@@ -111,9 +106,7 @@ const TransactionDetailScreen: React.FC<Props> = ({ request, onBack }) => {
             </div>
          </div>
 
-         {/* Connector */}
          <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 relative overflow-hidden">
-             {/* Connection Line Visual */}
              <div className="absolute top-1/2 -left-3 -translate-y-1/2 bg-slate-800 p-1 rounded-full border border-slate-700 z-10 hidden md:block">
                 <ArrowRight className="w-4 h-4 text-slate-500" />
              </div>
@@ -121,12 +114,12 @@ const TransactionDetailScreen: React.FC<Props> = ({ request, onBack }) => {
             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">Connector</h3>
             <div className="flex items-center gap-4">
                <div className="w-16 h-16 rounded-full border-2 border-nexible-gold p-0.5 overflow-hidden">
-                  <img src={connector?.avatar || ''} alt={connector?.name} className="w-full h-full rounded-full object-cover" />
+                  <img src={connector?.avatar || ''} alt={connector?.name} className="w-full h-full object-cover" />
                </div>
                <div>
                   <p className="text-xl font-bold text-white">{connector?.name}</p>
                   <p className="text-sm text-nexible-muted">{connector?.company}</p>
-                  <p className="text-xs text-nexible-gold mt-1 uppercase tracking-wide font-bold">Investible Network</p>
+                  <p className="text-xs text-nexible-gold mt-1 uppercase tracking-wide font-bold">Venture Network</p>
                </div>
             </div>
             <div className="mt-6 flex gap-2">
@@ -154,7 +147,7 @@ const TransactionDetailScreen: React.FC<Props> = ({ request, onBack }) => {
             <div className="p-4 bg-slate-900/50 rounded-lg border border-slate-800">
                <p className="text-xs text-slate-500 uppercase font-bold mb-1">Commission Rate</p>
                <p className="text-3xl font-bold text-nexible-gold">{request.commissionRate}%</p>
-               <p className="text-xs text-slate-500 mt-2">Agreed on Oct 15</p>
+               <p className="text-xs text-slate-500 mt-2">Agreed on date of request</p>
             </div>
 
             <div className="p-4 bg-emerald-900/10 rounded-lg border border-emerald-500/20">
@@ -162,14 +155,14 @@ const TransactionDetailScreen: React.FC<Props> = ({ request, onBack }) => {
                <p className="text-3xl font-bold text-emerald-400">
                  {request.value ? `$${(request.value * (request.commissionRate / 100)).toLocaleString()}` : '$0'}
                </p>
-               <p className="text-xs text-emerald-500/70 mt-2 font-medium">Payable to Investible/Connector</p>
+               <p className="text-xs text-emerald-500/70 mt-2 font-medium">Payable to Network Connector</p>
             </div>
          </div>
 
          <div className="mt-8 pt-6 border-t border-slate-700/50 flex items-start gap-4">
              <ShieldCheck className="w-6 h-6 text-slate-500 shrink-0" />
              <p className="text-sm text-slate-400 leading-relaxed">
-               This transaction record serves as the immutable ledger for the commercial agreement. The commission is legally binding as per the terms agreed upon request submission.
+               This transaction record serves as the immutable ledger for the commercial agreement. The commission is legally binding as per the terms agreed upon request submission within the fund network.
              </p>
          </div>
       </div>

@@ -2,7 +2,7 @@
   "export_status": "Ready",
   "repository_name": "nexible-os-demo",
   "branch": "main",
-  "description": "Nexible Network Operating System - Investible Demo MVP",
+  "description": "Nexible Network Operating System - Generic VC Platform Demo",
   "files_included": [
     "package.json",
     "vite.config.ts",
@@ -25,6 +25,6 @@
   ],
   "next_steps": {
     "vercel_deployment": "Connect this repository to Vercel. Select 'Vite' as the framework preset if not detected automatically.",
-    "demo_verification": "Visit the Vercel URL to verify the 50/50 split commission logic and full dashboard interactivity."
+    "demo_verification": "Visit the Vercel URL to verify the agnostic branding and full dashboard interactivity."
   }
 }

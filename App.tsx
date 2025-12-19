@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { USERS, MOCK_REQUESTS } from './services/mockData';
 import { User, IntroRequest, DetailViewType } from './types';
@@ -36,7 +35,7 @@ const App: React.FC = () => {
 
   const handleRoleSwitch = (user: User) => {
     setCurrentUser(user);
-    setActiveTab('dashboard'); // Reset view on switch
+    setActiveTab('dashboard'); 
     setDetailView(null);
     setSelectedRequest(null);
     setShowRoleMenu(false);
@@ -52,7 +51,6 @@ const App: React.FC = () => {
     setSelectedRequest(null);
   };
 
-  // Helper for role colors in sidebar
   const getRoleStyles = (role: string) => {
     switch(role) {
       case 'VC_Team': 
@@ -88,7 +86,6 @@ const App: React.FC = () => {
     }
   };
 
-  // Sidebar Component
   const Sidebar = () => (
     <div className="w-64 bg-nexible-dark border-r border-slate-800 flex flex-col h-screen fixed left-0 top-0 z-10">
       <div className="p-6">
@@ -101,7 +98,7 @@ const App: React.FC = () => {
            </div>
            <div className="leading-tight">
              <span className="block text-lg font-bold text-white tracking-tight group-hover:text-nexible-gold transition-colors">Nexible</span>
-             <span className="block text-xs text-nexible-muted font-medium tracking-wide">INVESTIBLE OS</span>
+             <span className="block text-xs text-nexible-muted font-medium tracking-wide">NETWORK OS</span>
            </div>
         </button>
         
@@ -144,7 +141,7 @@ const App: React.FC = () => {
              <div className="flex items-center gap-2 mb-2 text-nexible-gold text-xs font-bold uppercase tracking-wider">
                <Globe className="w-3 h-3" /> Fund Context
              </div>
-             <p className="text-white font-bold text-sm">Investible Fund IV</p>
+             <p className="text-white font-bold text-sm">Portfolio Fund</p>
              <p className="text-slate-500 text-xs mt-1">Admin: {currentUser.name}</p>
           </div>
         )}
@@ -205,12 +202,10 @@ const App: React.FC = () => {
     </div>
   );
 
-  // LANDING PAGE RENDER
   if (showLanding) {
     return <Homepage onEnterDemo={handleEnterDemo} />;
   }
 
-  // APP RENDER
   return (
     <div className="min-h-screen bg-nexible-dark text-slate-50 font-sans selection:bg-nexible-gold selection:text-black">
       <Sidebar />
@@ -220,9 +215,9 @@ const App: React.FC = () => {
         <header className="sticky top-0 z-20 bg-nexible-dark/90 backdrop-blur-md border-b border-slate-800 px-8 py-4 flex justify-between items-center">
            <div className="flex items-center gap-4">
               <div className="hidden md:flex items-center gap-2 text-sm font-medium text-slate-400">
-                <span className="text-white">Investible</span>
+                <span className="text-white">Network Platform</span>
                 <span className="text-slate-600">/</span>
-                <span>Network Operating System</span>
+                <span>Operating System</span>
                 <span className="text-slate-600">/</span>
                 <span className="text-nexible-gold">{currentUser.company}</span>
               </div>
