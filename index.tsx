@@ -1,4 +1,4 @@
-// Enterprise Version 1.0 - Pricing Removed
+// Enterprise Version 1.1 - Network OS Pivot Complete (Pricing Removed)
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
